@@ -1,8 +1,8 @@
 package day02_test
 
 import (
-	"spissable/advent-of-go-template/day02"
-	"spissable/advent-of-go-template/utils"
+	"burlea/Advent_of_Code_2025/day02"
+	"burlea/Advent_of_Code_2025/utils"
 	"testing"
 )
 
