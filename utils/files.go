@@ -31,6 +31,10 @@ func ParseInputToStringArray(input []byte) []string {
 	return strings.Split(string(input), "\n")
 }
 
+func ParseInputCommaSeparatedArray(input []byte) []string {
+	return strings.Split(string(input), ",")
+}
+
 func ParseInputTo2DStringArray(input []byte) [][]string {
 	rows := ParseInputToStringArray(input)
 	var result [][]string
