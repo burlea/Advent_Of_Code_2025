@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 )
 
@@ -39,9 +40,25 @@ func ParseInputTo2DStringArray(input []byte) [][]string {
 	rows := ParseInputToStringArray(input)
 	var result [][]string
 	for _, row := range rows {
+		cols := strings.Split(row, "")
+
+		result = append(result, cols)
+	}
+	return result
+}
+
+func ParseInputTo2DStringSpacedArray(input []byte) [][]string {
+	rows := ParseInputToStringArray(input)
+	var result [][]string
+	for _, row := range rows {
 		cols := strings.Split(row, " ")
 
 		result = append(result, cols)
 	}
 	return result
+}
+
+func ConvertStringToUInt64(str string) uint64 {
+	num, _ := strconv.ParseUint(str, 10, 64)
+	return num
 }
