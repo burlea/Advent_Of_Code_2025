@@ -62,3 +62,7 @@ func ConvertStringToUInt64(str string) uint64 {
 	num, _ := strconv.ParseUint(str, 10, 64)
 	return num
 }
+
+func ConvertIntToString(num int) string {
+	return strconv.Itoa(num)
+}
