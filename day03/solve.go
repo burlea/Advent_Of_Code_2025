@@ -2,7 +2,6 @@ package day03
 
 import (
 	"burlea/Advent_of_Code_2025/utils"
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -45,52 +44,37 @@ func SolvePuzzle2(input []byte) uint64 {
 	var joltageTotal uint64
 
 	for _, bank := range banks {
+		const target = 12
+		n := len(bank)
 
-		fmt.Println("bank in start:", bank)
-
-		var numberList = []string{"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"}
-
-		fmt.Println("Starting Number list:", numberList)
-
-		for i := 0; i < len(bank); i++ {
-			current := bank[i]
-
-			fmt.Println("Current Number:", current)
-
-			for j := 0; j < len(numberList); j++ {
-				fmt.Println("Current Number List:", numberList[j])
-
-				spacesLeftInBank := len(bank) - i - 1
-				spacesLeftInNumberList := len(numberList) - j - 1
-
-				fmt.Println("Spaces left in bank:", spacesLeftInBank)
-				fmt.Println("Spaces left in number list:", spacesLeftInNumberList)
-				fmt.Println("index j:", j)
-				fmt.Println("index i:", i)
-
-				if current >= numberList[j] && (spacesLeftInBank >= spacesLeftInNumberList) {
-					if j == 0 {
-						newList := make([]string, len(numberList))
-						copy(newList, bank[i:i+12])
-						numberList = newList
-					} else {
-						fmt.Println("numberList: ", numberList)
-						fmt.Println("Bank: ", bank)
-						fmt.Println("First Half: ", numberList[:j])
-						fmt.Println("Second Half: ", bank[i:(i+len(numberList)-j)])
-						newList := make([]string, len(numberList))
-						copy(newList[:j], numberList[:j])
-						copy(newList[j:], bank[i:(i+len(numberList)-j)])
-						numberList = newList
-					}
-					fmt.Println("New Number list:", numberList)
-					break
-				}
+		if n <= target {
+			num := make([]string, target)
+			copy(num, bank)
+			for i := len(bank); i < target; i++ {
+				num[i] = "0"
 			}
+			joltageTotal += utils.ConvertStringToUInt64(strings.Join(num, ""))
+			continue
 		}
 
-		fmt.Println("Ending Number list:", numberList)
-		joltageTotal += utils.ConvertStringToUInt64(strings.Join(numberList, ""))
+		toRemove := n - target
+		stack := make([]string, 0, n)
+
+		for i := 0; i < n; i++ {
+			curr := bank[i]
+			for toRemove > 0 && len(stack) > 0 && stack[len(stack)-1] < curr {
+				stack = stack[:len(stack)-1]
+				toRemove--
+			}
+			stack = append(stack, curr)
+		}
+
+		if toRemove > 0 {
+			stack = stack[:len(stack)-toRemove]
+		}
+
+		result := stack[:target]
+		joltageTotal += utils.ConvertStringToUInt64(strings.Join(result, ""))
 	}
 	return joltageTotal
 }
