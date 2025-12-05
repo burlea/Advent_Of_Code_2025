@@ -10,17 +10,6 @@ type RangeValue struct {
 	UpperBound int
 }
 
-func (r RangeValue) NewRangeValue(newLowerBound int, newUpperBound int) any {
-	panic("unimplemented")
-}
-
-func NewRangeValue(lowerBound int, upperBound int) RangeValue {
-	return RangeValue{
-		LowerBound: lowerBound,
-		UpperBound: upperBound,
-	}
-}
-
 func ParseRangeValue(line string) RangeValue {
 	rangeValues := strings.Split(line, "-")
 
