@@ -22,35 +22,35 @@ func SolvePuzzle1(input []byte) int {
 			var totalAdjacentRolls int = 0
 
 			// left up
-			if withinBounds(i-1, j-1, totalRows, totalCols) && rollMap[i-1][j-1] == "@" {
+			if utils.IsWithinBounds(i-1, j-1, totalRows, totalCols) && rollMap[i-1][j-1] == "@" {
 				totalAdjacentRolls++
 			}
 			// left
-			if withinBounds(i-1, j, totalRows, totalCols) && rollMap[i-1][j] == "@" {
+			if utils.IsWithinBounds(i-1, j, totalRows, totalCols) && rollMap[i-1][j] == "@" {
 				totalAdjacentRolls++
 			}
 			// left down
-			if withinBounds(i-1, j+1, totalRows, totalCols) && rollMap[i-1][j+1] == "@" {
+			if utils.IsWithinBounds(i-1, j+1, totalRows, totalCols) && rollMap[i-1][j+1] == "@" {
 				totalAdjacentRolls++
 			}
 			// down
-			if withinBounds(i, j+1, totalRows, totalCols) && rollMap[i][j+1] == "@" {
+			if utils.IsWithinBounds(i, j+1, totalRows, totalCols) && rollMap[i][j+1] == "@" {
 				totalAdjacentRolls++
 			}
 			// right down
-			if withinBounds(i+1, j+1, totalRows, totalCols) && rollMap[i+1][j+1] == "@" {
+			if utils.IsWithinBounds(i+1, j+1, totalRows, totalCols) && rollMap[i+1][j+1] == "@" {
 				totalAdjacentRolls++
 			}
 			// right
-			if withinBounds(i+1, j, totalRows, totalCols) && rollMap[i+1][j] == "@" {
+			if utils.IsWithinBounds(i+1, j, totalRows, totalCols) && rollMap[i+1][j] == "@" {
 				totalAdjacentRolls++
 			}
 			// right up
-			if withinBounds(i+1, j-1, totalRows, totalCols) && rollMap[i+1][j-1] == "@" {
+			if utils.IsWithinBounds(i+1, j-1, totalRows, totalCols) && rollMap[i+1][j-1] == "@" {
 				totalAdjacentRolls++
 			}
 			// up
-			if withinBounds(i, j-1, totalRows, totalCols) && rollMap[i][j-1] == "@" {
+			if utils.IsWithinBounds(i, j-1, totalRows, totalCols) && rollMap[i][j-1] == "@" {
 				totalAdjacentRolls++
 			}
 
@@ -60,10 +60,6 @@ func SolvePuzzle1(input []byte) int {
 		}
 	}
 	return totalAccessableRolls
-}
-
-func withinBounds(i int, j int, totalRows int, totalCols int) bool {
-	return i >= 0 && j >= 0 && i < totalRows && j < totalCols
 }
 
 func SolvePuzzle2(input []byte) int {
@@ -102,35 +98,35 @@ func RemoveRolls(rollMap [][]string) (int, [][]string) {
 			var totalAdjacentRolls int = 0
 
 			// left up
-			if withinBounds(i-1, j-1, totalRows, totalCols) && rollMap[i-1][j-1] == "@" {
+			if utils.IsWithinBounds(i-1, j-1, totalRows, totalCols) && rollMap[i-1][j-1] == "@" {
 				totalAdjacentRolls++
 			}
 			// left
-			if withinBounds(i-1, j, totalRows, totalCols) && rollMap[i-1][j] == "@" {
+			if utils.IsWithinBounds(i-1, j, totalRows, totalCols) && rollMap[i-1][j] == "@" {
 				totalAdjacentRolls++
 			}
 			// left down
-			if withinBounds(i-1, j+1, totalRows, totalCols) && rollMap[i-1][j+1] == "@" {
+			if utils.IsWithinBounds(i-1, j+1, totalRows, totalCols) && rollMap[i-1][j+1] == "@" {
 				totalAdjacentRolls++
 			}
 			// down
-			if withinBounds(i, j+1, totalRows, totalCols) && rollMap[i][j+1] == "@" {
+			if utils.IsWithinBounds(i, j+1, totalRows, totalCols) && rollMap[i][j+1] == "@" {
 				totalAdjacentRolls++
 			}
 			// right down
-			if withinBounds(i+1, j+1, totalRows, totalCols) && rollMap[i+1][j+1] == "@" {
+			if utils.IsWithinBounds(i+1, j+1, totalRows, totalCols) && rollMap[i+1][j+1] == "@" {
 				totalAdjacentRolls++
 			}
 			// right
-			if withinBounds(i+1, j, totalRows, totalCols) && rollMap[i+1][j] == "@" {
+			if utils.IsWithinBounds(i+1, j, totalRows, totalCols) && rollMap[i+1][j] == "@" {
 				totalAdjacentRolls++
 			}
 			// right up
-			if withinBounds(i+1, j-1, totalRows, totalCols) && rollMap[i+1][j-1] == "@" {
+			if utils.IsWithinBounds(i+1, j-1, totalRows, totalCols) && rollMap[i+1][j-1] == "@" {
 				totalAdjacentRolls++
 			}
 			// up
-			if withinBounds(i, j-1, totalRows, totalCols) && rollMap[i][j-1] == "@" {
+			if utils.IsWithinBounds(i, j-1, totalRows, totalCols) && rollMap[i][j-1] == "@" {
 				totalAdjacentRolls++
 			}
 

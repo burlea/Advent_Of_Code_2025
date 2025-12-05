@@ -66,3 +66,7 @@ func ConvertStringToUInt64(str string) uint64 {
 func ConvertIntToString(num int) string {
 	return strconv.Itoa(num)
 }
+
+func IsWithinBounds(i int, j int, totalRows int, totalCols int) bool {
+	return i >= 0 && j >= 0 && i < totalRows && j < totalCols
+}
