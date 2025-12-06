@@ -100,3 +100,20 @@ func ParseToTwoPartsSpaced(input []byte) ([]string, []string) {
 
 	return part1, part2
 }
+
+func ParseSpacesFromLines(lines [][]string) [][]string {
+	var result [][]string
+
+	for _, line := range lines {
+		var formattedLine []string
+		for _, item := range line {
+			if item == "" {
+				continue
+			}
+			formattedLine = append(formattedLine, item)
+		}
+		result = append(result, formattedLine)
+	}
+
+	return result
+}
