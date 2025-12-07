@@ -2,7 +2,6 @@ package day07
 
 import (
 	"burlea/Advent_of_Code_2025/utils"
-	"fmt"
 	"slices"
 )
 
@@ -50,8 +49,6 @@ func SolvePuzzle1(input []byte) int {
 		}
 		currentLineIndexes = nextLineIndexes
 	}
-
-	fmt.Println(currentSplits)
 	return currentSplits
 }
 
