@@ -133,7 +133,8 @@ func inShape(point point, edgeValues []edge) bool {
 		if edge.point1.x == edge.point2.x { // ver line
 			if pointWithin(point.y, edge.point1.y, edge.point2.y) {
 				if edge.point1.x == point.x {
-					return true
+					left++
+					right++
 				} else if edge.point1.x > point.x {
 					right++
 				} else {
@@ -141,15 +142,16 @@ func inShape(point point, edgeValues []edge) bool {
 				}
 			} else if edge.point1.x == point.x {
 				if edge.point1.y > point.y && edge.point2.y > point.y {
-					down++
+					continue
 				} else if edge.point1.y < point.y && edge.point2.y < point.y {
-					up++
+					continue
 				}
 			}
 		} else if edge.point1.y == edge.point2.y { // hor line
 			if pointWithin(point.x, edge.point1.x, edge.point2.x) {
 				if edge.point1.y == point.y {
-					return true
+					up++
+					down++
 				} else if edge.point1.y > point.y {
 					down++
 				} else {
@@ -157,9 +159,9 @@ func inShape(point point, edgeValues []edge) bool {
 				}
 			} else if edge.point1.y == point.y {
 				if edge.point1.x > point.x && edge.point2.x > point.x {
-					right++
+					continue
 				} else if edge.point1.x < point.x && edge.point2.x < point.x {
-					left++
+					continue
 				}
 			}
 		}
@@ -170,7 +172,7 @@ func inShape(point point, edgeValues []edge) bool {
 	fmt.Println("up: ", up)
 	fmt.Println("down: ", down)
 
-	return left%2 == 1 && right%2 == 1 && up%2 == 1 && down%2 == 1
+	return (left%2 == 1) && (right%2 == 1) && (down%2 == 1) && (up%2 == 1)
 }
 
 func pointWithin(value int, bound1 int, bound2 int) bool {
